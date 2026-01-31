@@ -1,0 +1,14 @@
+{
+  "Group": "WanMine",
+  "Name": "Wans Music Recorder",
+  "Version": "1.0.0",
+  "Description": "",
+  "Authors": [],
+  "Website": "https://wanmine.net/",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "LoadBefore": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": false,
+  "SubPlugins": []
+}
