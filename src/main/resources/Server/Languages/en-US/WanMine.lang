@@ -1,6 +1,12 @@
 
-items.Furniture_Recorder.name = Recorder
-items.Furniture_Jukebox.name = Jukebox
-items.Item_Music_Disk.name = Music Disk
+items.Furniture_Resonance_Scriptor.name = Resonance Scriptor
+items.Furniture_Resonance_Scriptor.description=[TMP] <color is="#dcdcdc">An ancient recording engine built by forgotten artisans of sound.</color>\n\nIt carves vibrations directly into matter,\npreserving voices and melodies as mechanical memory.\n\nEach engraving is not music alone,\nbut an <color is="#ffffff">echo of a lost age</color>.
+
+items.Furniture_Resonance_Core.name = Echo Resonator
+items.Furniture_Resonance_Core.description=[TMP] <color is="#dcdcdc">A dormant playback construct designed to awaken dormant recordings.</color>\n\nWhen activated, it releases stored resonance,\nallowing ancient machines to sing once more.\n\nThe sound it emits is not new —\nit is <color is="#ffffff">remembered</color>.
+
+items.Item_Echo_Resonator.name = Resonance Core
+items.Item_Echo_Resonator.description=[TMP] <color is="#dcdcdc">A crystallized fragment of encoded vibration.</color>\n\nThis core stores a melody as pure mechanical resonance,\nfrozen in time.\n\nEven in silence,\nit hums with <color is="#ffffff">lingering echoes</color>.
+
 
 

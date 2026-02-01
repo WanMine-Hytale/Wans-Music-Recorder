@@ -1,6 +1,7 @@
 {
   "TranslationProperties": {
-    "Name": "WanMine.items.Furniture_Recorder.name"
+    "Name": "WanMine.items.Item_Echo_Resonator.name",
+    "Description": "WanMine.items.Item_Echo_Resonator.description"
   },
   "PlayerAnimationsId": "Block",
   "Categories": [
@@ -30,14 +31,13 @@
       }
     ]
   },
-  "Icon": "Icons/ItemsGenerated/Recorder.png",
   "BlockType": {
     "BlockParticleSetId": "Wood",
     "BlockSoundSetId": "Wood",
-    "CustomModel": "Blocks/Recorder.blockymodel",
+    "CustomModel": "Blocks/Echo_Resonator.blockymodel",
     "CustomModelTexture": [
       {
-        "Texture": "BlockTextures/Recorder.png",
+        "Texture": "BlockTextures/Echo_Resonator.png",
         "Weight": 1
       }
     ],
@@ -80,7 +80,7 @@
       "Furniture"
     ],
     "SubType": [
-      "Recorder"
+      "Echo_Resonator"
     ]
   },
   "ItemSoundSetId": "ISS_Blocks_Wood",
@@ -96,5 +96,6 @@
       0,
       -13.5
     ]
-  }
+  },
+  "Icon": "Icons/ItemsGenerated/Echo_Resonator.png"
 }

@@ -1,6 +1,7 @@
 {
   "TranslationProperties": {
-    "Name": "WanMine.items.Furniture_Jukebox.name"
+    "Name": "WanMine.items.Furniture_Resonance_Scriptor.name",
+    "Description": "WanMine.items.Furniture_Resonance_Scriptor.description"
   },
   "PlayerAnimationsId": "Block",
   "Categories": [
@@ -30,14 +31,13 @@
       }
     ]
   },
-  "Icon": "Icons/ItemsGenerated/Jukebox2.png",
   "BlockType": {
     "BlockParticleSetId": "Wood",
     "BlockSoundSetId": "Wood",
-    "CustomModel": "Blocks/Jukebox.blockymodel",
+    "CustomModel": "Blocks/Resonance_Scriptor.blockymodel",
     "CustomModelTexture": [
       {
-        "Texture": "BlockTextures/Jukebox.png",
+        "Texture": "BlockTextures/Resonance_Scriptor.png",
         "Weight": 1
       }
     ],
@@ -80,7 +80,7 @@
       "Furniture"
     ],
     "SubType": [
-      "Jukebox"
+      "Resonance_Scriptor"
     ]
   },
   "ItemSoundSetId": "ISS_Blocks_Wood",
@@ -96,5 +96,6 @@
       0,
       -13.5
     ]
-  }
+  },
+  "Icon": "Icons/ItemsGenerated/Resonance_Scriptor.png"
 }

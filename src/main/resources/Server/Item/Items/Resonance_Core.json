@@ -1,12 +1,13 @@
 {
   "TranslationProperties": {
-    "Name": "WanMine.items.Item_Music_Disk.name"
+    "Name": "WanMine.items.Furniture_Resonance_Core.name",
+    "Description": "WanMine.items.Furniture_Resonance_Core.description"
   },
   "Categories": [
     "Items.Ingredients"
   ],
   "PlayerAnimationsId": "Item",
-  "Texture": "Items/Music_Disk.png",
+  "Texture": "Items/Resonance_Core.png",
   "IconProperties": {
     "Scale": 0.76,
     "Rotation": [
@@ -24,8 +25,8 @@
       "Recipe"
     ]
   },
-  "Model": "Items/Music_Disk.blockymodel",
+  "Model": "Items/Resonance_Core.blockymodel",
   "Scale": 1,
   "UsePlayerAnimations": false,
-  "Icon": "Icons/ItemsGenerated/Music_Disk.png"
+  "Icon": "Icons/ItemsGenerated/Resonance_Core.png"
 }
