@@ -1,0 +1,25 @@
+{
+    "Group": "WanMine",
+    "Name": "Wan's Music Recorder",
+    "Version": "1.0.0",
+    "Description": "",
+    "Authors": [
+        {
+            "Name": "WanMine"
+        },
+        {
+            "Name": "DiamondMaster"
+        },
+        {
+            "Name": "FonnyFofo"
+        }
+    ],
+    "Website": "",
+    "DisabledByDefault": false,
+    "IncludesAssetPack": true,
+    "Dependencies": {},
+    "OptionalDependencies": {},
+    "LoadBefore": {},
+    "ServerVersion": "*",
+    "Main": "net.wanmine.musicrecorder.WansMusicRecorderPlugin"
+}
