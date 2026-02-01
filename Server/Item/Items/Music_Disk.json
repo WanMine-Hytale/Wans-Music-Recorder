@@ -1,0 +1,31 @@
+{
+  "TranslationProperties": {
+    "Name": "WanMine.items.Item_Music_Disk.name"
+  },
+  "Categories": [
+    "Items.Ingredients"
+  ],
+  "PlayerAnimationsId": "Item",
+  "Texture": "Items/Music_Disk.png",
+  "IconProperties": {
+    "Scale": 0.76,
+    "Rotation": [
+      135,
+      135,
+      0
+    ],
+    "Translation": [
+      -1,
+      5
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Recipe"
+    ]
+  },
+  "Model": "Items/Music_Disk.blockymodel",
+  "Scale": 1,
+  "UsePlayerAnimations": false,
+  "Icon": "Icons/ItemsGenerated/Music_Disk.png"
+}
