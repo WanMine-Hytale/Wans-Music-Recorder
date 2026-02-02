@@ -1,10 +1,10 @@
 {
   "TranslationProperties": {
-    "Name": "WanMine.items.Furniture_Resonance_Core.name",
-    "Description": "WanMine.items.Furniture_Resonance_Core.description"
+    "Name": "WanMine.items.Item_Resonance_Core.name",
+    "Description": "WanMine.items.Item_Resonance_Core.description"
   },
   "Categories": [
-    "Items.Ingredients"
+    "Items.Recipes"
   ],
   "PlayerAnimationsId": "Item",
   "Texture": "Items/Resonance_Core.png",

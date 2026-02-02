@@ -1,11 +1,11 @@
 {
   "TranslationProperties": {
-    "Name": "WanMine.items.Item_Echo_Resonator.name",
-    "Description": "WanMine.items.Item_Echo_Resonator.description"
+    "Name": "WanMine.items.Furniture_Echo_Resonator.name",
+    "Description": "WanMine.items.Furniture_Echo_Resonator.description"
   },
   "PlayerAnimationsId": "Block",
   "Categories": [
-    "Furniture.Furniture"
+    "Furniture.Benches"
   ],
   "Set": "Furniture_Tavern",
   "Recipe": {
