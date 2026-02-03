@@ -85,7 +85,7 @@ public class MusicUtils {
         }
 
         Map<String, Object> layer = new HashMap<>();
-        layer.put("Files", Collections.singletonList(songFilePath.toPath().toString().replace("mods\\WansMusicRecorderRuntime\\Common\\", "").replace("\\", "/")));
+        layer.put("Files", Collections.singletonList("Sounds/" + songFilePath.toPath().getFileName().toString()));
         layer.put("Volume", 10);
 
         Map<String, Object> soundEvent = new HashMap<>();

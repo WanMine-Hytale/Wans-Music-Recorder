@@ -1,1 +1,1 @@
-rootProject.name = "WansMusicRecorder"
+rootProject.name = "WansEchoesOfResonance"

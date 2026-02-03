@@ -1,7 +1,9 @@
-import dev.scaffoldit.hytale.HytaleManifest
+import dev.scaffoldit.hytale.wire.HytaleManifest
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
-    id("dev.scaffoldit") version "0.2.4-rc1"
+    id("dev.scaffoldit") version "0.2.4"
+    id("com.gradleup.shadow") version "9.3.1"
     java
     idea
 }
@@ -36,9 +38,17 @@ repositories {
     maven { url = uri("https://jitpack.io") }
 }
 
+val shade: Configuration by configurations.creating {
+    isCanBeResolved = true
+    isCanBeConsumed = false
+}
+
+configurations.implementation.get().extendsFrom(shade)
+
 dependencies {
-    runtimeOnly("dev.scaffoldit:devtools:0.2.4-rc1")
-    implementation("ws.schild:jave-all-deps:3.3.1")
+    runtimeOnly("dev.scaffoldit:devtools:0.2.4")
+
+    shade("ws.schild:jave-core:3.3.1")
 }
 
 idea {
@@ -46,4 +56,19 @@ idea {
         isDownloadJavadoc = true
         isDownloadSources = true
     }
+}
+
+tasks.named<ShadowJar>("shadowJar") {
+    configurations = listOf(shade)
+
+    archiveClassifier.set("")
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
+    relocate("ws.schild.jave", "net.wanmine.musicrecorder.jave") {
+        skipStringConstants = true
+    }
+}
+
+tasks.build {
+    dependsOn(tasks.shadowJar)
 }

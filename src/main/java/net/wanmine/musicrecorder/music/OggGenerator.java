@@ -139,6 +139,8 @@ public class OggGenerator {
     }
 
     private static void writeOggFile(File wavFile, File outputFile) throws EncoderException {
+        FFMPegLocator locator = new FFMPegLocator();
+
         AudioAttributes audio = new AudioAttributes();
         audio.setCodec("libvorbis");
         audio.setBitRate(128000);    // 128 kbps
@@ -149,8 +151,8 @@ public class OggGenerator {
         attrs.setOutputFormat("ogg");
         attrs.setAudioAttributes(audio);
 
-        Encoder encoder = new Encoder();
-        encoder.encode(new MultimediaObject(wavFile), outputFile, attrs);
+        Encoder encoder = new Encoder(locator);
+        encoder.encode(new MultimediaObject(wavFile, locator), outputFile, attrs);
 
         wavFile.delete();
     }
