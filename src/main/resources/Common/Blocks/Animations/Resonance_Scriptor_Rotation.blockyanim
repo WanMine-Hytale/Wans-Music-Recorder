@@ -3,6 +3,59 @@
   "duration": 60,
   "holdLastKeyframe": false,
   "nodeAnimations": {
+    "hexadecagon": {
+      "position": [],
+      "orientation": [
+        {
+          "time": 0,
+          "delta": {"x": 0, "y": 0, "z": 0, "w": 1},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 7,
+          "delta": {"x": -0.38268, "y": 0, "z": 0, "w": 0.92388},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 15,
+          "delta": {"x": -0.70711, "y": 0, "z": 0, "w": 0.70711},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 22,
+          "delta": {"x": -0.92388, "y": 0, "z": 0, "w": 0.38268},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 30,
+          "delta": {"x": -1, "y": 0, "z": 0, "w": 0},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 37,
+          "delta": {"x": 0.92388, "y": 0, "z": 0, "w": 0.38268},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 45,
+          "delta": {"x": 0.70711, "y": 0, "z": 0, "w": 0.70711},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 52,
+          "delta": {"x": 0.38268, "y": 0, "z": 0, "w": 0.92388},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 60,
+          "delta": {"x": 0, "y": 0, "z": 0, "w": 1},
+          "interpolationType": "linear"
+        }
+      ],
+      "shapeStretch": [],
+      "shapeVisible": [],
+      "shapeUvOffset": []
+    },
     "hexadecagon2": {
       "position": [],
       "orientation": [
@@ -236,33 +289,7 @@
       "shapeUvOffset": []
     },
     "bone12": {
-      "position": [
-        {
-          "time": 0,
-          "delta": {"x": 0, "y": -2, "z": 0},
-          "interpolationType": "linear"
-        },
-        {
-          "time": 15,
-          "delta": {"x": 0, "y": 0, "z": 0},
-          "interpolationType": "linear"
-        },
-        {
-          "time": 30,
-          "delta": {"x": 0, "y": 1.33, "z": 0},
-          "interpolationType": "linear"
-        },
-        {
-          "time": 45,
-          "delta": {"x": 0, "y": 0, "z": 0},
-          "interpolationType": "linear"
-        },
-        {
-          "time": 60,
-          "delta": {"x": 0, "y": -2, "z": 0},
-          "interpolationType": "linear"
-        }
-      ],
+      "position": [],
       "orientation": [
         {
           "time": 0,

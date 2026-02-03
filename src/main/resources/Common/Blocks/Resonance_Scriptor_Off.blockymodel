@@ -1378,7 +1378,7 @@
                   "shape": {
                     "type": "box",
                     "offset": {"x": 0, "y": 0, "z": 0},
-                    "stretch": {"x": 1, "y": 1, "z": 1.1},
+                    "stretch": {"x": 1, "y": 1, "z": 1.05},
                     "settings": {
                       "isPiece": false,
                       "size": {"x": 1, "y": 1, "z": 1},
@@ -1482,7 +1482,7 @@
                   "shape": {
                     "type": "box",
                     "offset": {"x": 0, "y": 0, "z": 0},
-                    "stretch": {"x": 1, "y": 1, "z": 1.1},
+                    "stretch": {"x": 1, "y": 1, "z": 1.05},
                     "settings": {
                       "isPiece": false,
                       "size": {"x": 1, "y": 1, "z": 1},
@@ -1743,7 +1743,7 @@
                   "shape": {
                     "type": "box",
                     "offset": {"x": 0, "y": 0, "z": 0},
-                    "stretch": {"x": 1, "y": 1, "z": 1.1},
+                    "stretch": {"x": 1, "y": 1, "z": 1.05},
                     "settings": {
                       "isPiece": false,
                       "size": {"x": 1, "y": 1, "z": 1},
@@ -1847,7 +1847,7 @@
                   "shape": {
                     "type": "box",
                     "offset": {"x": 0, "y": 0, "z": 0},
-                    "stretch": {"x": 1, "y": 1, "z": 1.1},
+                    "stretch": {"x": 1, "y": 1, "z": 1.05},
                     "settings": {
                       "isPiece": false,
                       "size": {"x": 1, "y": 1, "z": 1},
@@ -2001,7 +2001,7 @@
               "id": "40",
               "name": "bone5",
               "position": {"x": 1, "y": 12, "z": -27},
-              "orientation": {"x": -0.70711, "y": 0, "z": -0.70711, "w": 0},
+              "orientation": {"x": 0.70711, "y": 0, "z": 0.70711, "w": 0},
               "shape": {
                 "type": "box",
                 "offset": {"x": -3.5, "y": 6, "z": 0},
@@ -3947,7 +3947,7 @@
               "id": "78",
               "name": "bone4",
               "position": {"x": 13.48, "y": 14.12741, "z": -9.39993},
-              "orientation": {"x": -0.70711, "y": 0, "z": -0.70711, "w": 0},
+              "orientation": {"x": 0.70711, "y": 0, "z": 0.70711, "w": 0},
               "shape": {
                 "type": "none",
                 "offset": {"x": 0, "y": 0, "z": 0},
@@ -4228,7 +4228,7 @@
               "id": "84",
               "name": "bone6",
               "position": {"x": -5.395, "y": 7.90241, "z": -26.39993},
-              "orientation": {"x": 1, "y": 0, "z": 0, "w": 0},
+              "orientation": {"x": -1, "y": 0, "z": 0, "w": 0},
               "shape": {
                 "type": "none",
                 "offset": {"x": 0, "y": 0, "z": 0},
