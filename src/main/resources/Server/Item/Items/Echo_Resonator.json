@@ -39,7 +39,7 @@
     "CustomModel": "Blocks/Echo_Resonator_Off.blockymodel",
     "CustomModelTexture": [
       {
-        "Texture": "BlockTextures/Echo_Resonator_Off.png",
+        "Texture": "BlockTextures/Off.png",
         "Weight": 1
       }
     ],
@@ -58,7 +58,7 @@
         "Off": {
           "CustomModelTexture": [
             {
-              "Texture": "BlockTextures/Echo_Resonator_Off.png"
+              "Texture": "BlockTextures/Off.png"
             }
           ],
           "CustomModel": "Blocks/Echo_Resonator_Off.blockymodel"
@@ -66,11 +66,20 @@
         "On": {
           "CustomModelTexture": [
             {
-              "Texture": "BlockTextures/Echo_Resonator_On.png"
+              "Texture": "BlockTextures/On.png"
             }
           ],
           "CustomModel": "Blocks/Echo_Resonator_On.blockymodel",
-          "CustomModelAnimation": "Blocks/Animations/Echo_Resonator_Rotation.blockyanim"
+          "CustomModelAnimation": "Blocks/Animations/Echo_Resonator_Rotation.blockyanim",
+          "Particles": [
+            {
+              "SystemId": "Block_Gem_Sparks",
+              "TargetEntityPart": "Self",
+              "TargetNodeName": "bone12",
+              "Color": "#78dfff",
+              "Scale": 0.3
+            }
+          ]
         }
       }
     },
@@ -100,6 +109,6 @@
     ]
   },
   "Model": "Blocks/Echo_Resonator_Off.blockymodel",
-  "Texture": "BlockTextures/Echo_Resonator_Off.png",
+  "Texture": "BlockTextures/Off.png",
   "Icon": "Icons/ItemsGenerated/Echo_Resonator.png"
 }
