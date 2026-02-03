@@ -5,39 +5,41 @@
   },
   "PlayerAnimationsId": "Block",
   "Categories": [
-    "Furniture.Furniture"
+    "Furniture.Benches"
   ],
-  "Set": "Furniture_Tavern",
   "Recipe": {
     "TimeSeconds": 2,
     "Input": [
       {
-        "Quantity": 3,
-        "ResourceTypeId": "Wood_Trunk"
+        "ResourceTypeId": "Rock",
+        "Quantity": 12
       },
       {
         "ItemId": "Ingredient_Life_Essence",
-        "Quantity": 10
+        "Quantity": 15
+      },
+      {
+        "Quantity": 25,
+        "ItemId": "Ingredient_Bar_Copper"
       }
     ],
     "BenchRequirement": [
       {
         "Type": "Crafting",
-        "Id": "Farmingbench",
+        "Id": "Furniture_Bench",
         "Categories": [
-          "Planters"
-        ],
-        "RequiredTierLevel": 4
+          "Furniture_Misc"
+        ]
       }
     ]
   },
   "BlockType": {
-    "BlockParticleSetId": "Wood",
-    "BlockSoundSetId": "Wood",
-    "CustomModel": "Blocks/Resonance_Scriptor.blockymodel",
+    "BlockParticleSetId": "Stone",
+    "BlockSoundSetId": "Stone",
+    "CustomModel": "Blocks/Resonance_Scriptor_Off.blockymodel",
     "CustomModelTexture": [
       {
-        "Texture": "BlockTextures/Resonance_Scriptor.png",
+        "Texture": "BlockTextures/Resonance_Scriptor_Off.png",
         "Weight": 1
       }
     ],
@@ -45,36 +47,36 @@
     "Flags": {},
     "Gathering": {
       "Breaking": {
-        "GatherType": "Woods"
-      },
-      "Soft": {
-        "IsWeaponBreakable": false
+        "GatherType": "Stone"
       }
     },
     "Material": "Solid",
     "Opacity": "Solid",
-    "ParticleColor": "#543022",
-    "Support": {
-      "Down": [
-        {
-          "FaceType": "Full"
+    "ParticleColor": "#535353",
+    "State": {
+      "Definitions": {
+        "Off": {
+          "CustomModelTexture": [
+            {
+              "Texture": "BlockTextures/Resonance_Scriptor_Off.png"
+            }
+          ],
+          "CustomModel": "Blocks/Resonance_Scriptor_Off.blockymodel",
+          "Material": "Solid"
+        },
+        "On": {
+          "CustomModelTexture": [
+            {
+              "Texture": "BlockTextures/Resonance_Scriptor_On.png"
+            }
+          ],
+          "CustomModel": "Blocks/Resonance_Scriptor_On.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/Resonance_Scriptor_Rotation.blockyanim"
         }
-      ]
+      }
     },
-    "Supporting": {
-      "Up": [
-        {}
-      ]
-    }
+    "Looping": true
   },
-  "ResourceTypes": [
-    {
-      "Id": "Fuel"
-    },
-    {
-      "Id": "Charcoal"
-    }
-  ],
   "Tags": {
     "Type": [
       "Furniture"
@@ -83,7 +85,7 @@
       "Resonance_Scriptor"
     ]
   },
-  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "ItemSoundSetId": "ISS_Blocks_Stone",
   "ItemLevel": 2,
   "IconProperties": {
     "Scale": 0.58823,
@@ -97,5 +99,7 @@
       -13.5
     ]
   },
+  "Model": "Blocks/Resonance_Scriptor_Off.blockymodel",
+  "Texture": "BlockTextures/Resonance_Scriptor_Off.png",
   "Icon": "Icons/ItemsGenerated/Resonance_Scriptor.png"
 }
