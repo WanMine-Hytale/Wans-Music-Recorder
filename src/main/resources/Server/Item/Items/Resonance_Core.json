@@ -9,15 +9,15 @@
   "PlayerAnimationsId": "Item",
   "Texture": "Items/Resonance_Core.png",
   "IconProperties": {
-    "Scale": 0.76,
+    "Scale": 1.1,
     "Rotation": [
-      135,
-      135,
-      0
+      22.5,
+      45,
+      22.5
     ],
     "Translation": [
-      -1,
-      5
+      0,
+      -1
     ]
   },
   "Tags": {
@@ -26,7 +26,33 @@
     ]
   },
   "Model": "Items/Resonance_Core.blockymodel",
-  "Scale": 1,
   "UsePlayerAnimations": false,
-  "Icon": "Icons/ItemsGenerated/Resonance_Core.png"
+  "Scale": 2,
+  "Icon": "Icons/ItemsGenerated/Resonance_Core.png",
+  "Recipe": {
+    "TimeSeconds": 2,
+    "Input": [
+      {
+        "Quantity": 2,
+        "ItemId": "Ingredient_Crystal_Blue"
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 10
+      },
+      {
+        "Quantity": 3,
+        "ItemId": "Ingredient_Bar_Copper"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Arcanebench",
+        "Categories": [
+          "Arcane_Misc"
+        ]
+      }
+    ]
+  }
 }

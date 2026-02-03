@@ -3155,7 +3155,7 @@
               "id": "69",
               "name": "bone5",
               "position": {"x": 1, "y": 12, "z": -27},
-              "orientation": {"x": 0.70711, "y": 0, "z": 0.70711, "w": 0},
+              "orientation": {"x": -0.70711, "y": 0, "z": -0.70711, "w": 0},
               "shape": {
                 "type": "none",
                 "offset": {"x": 0, "y": 0, "z": 0},
@@ -3297,7 +3297,7 @@
               "id": "73",
               "name": "bone6",
               "position": {"x": -5.395, "y": 7.90241, "z": -26.39993},
-              "orientation": {"x": -1, "y": 0, "z": 0, "w": 0},
+              "orientation": {"x": 1, "y": 0, "z": 0, "w": 0},
               "shape": {
                 "type": "none",
                 "offset": {"x": 0, "y": 0, "z": 0},
@@ -5275,7 +5275,7 @@
                   "id": "119",
                   "name": "hexadecagon6",
                   "position": {"x": -10.5, "y": -8.5, "z": 0},
-                  "orientation": {"x": 0, "y": -1, "z": 0, "w": 0},
+                  "orientation": {"x": 0, "y": 1, "z": 0, "w": 0},
                   "shape": {
                     "type": "box",
                     "offset": {"x": -8.5, "y": 8.5, "z": 0},
@@ -5380,7 +5380,7 @@
                   "id": "121",
                   "name": "hexadecagon7",
                   "position": {"x": -10.5, "y": -8.5, "z": 0},
-                  "orientation": {"x": 0, "y": -0.92388, "z": 0, "w": 0.38268},
+                  "orientation": {"x": 0, "y": 0.92388, "z": 0, "w": -0.38268},
                   "shape": {
                     "type": "box",
                     "offset": {"x": -8.5, "y": 8.5, "z": 0},
@@ -6586,11 +6586,11 @@
         {
           "id": "144",
           "name": "bone12",
-          "position": {"x": -0.4, "y": 18.75, "z": -11.95},
+          "position": {"x": -1.4, "y": 20.75, "z": -12.95},
           "orientation": {"x": 0, "y": 0, "z": 0, "w": 1},
           "shape": {
             "type": "box",
-            "offset": {"x": -1, "y": 3.5, "z": -1},
+            "offset": {"x": 0, "y": 1.5, "z": 0},
             "stretch": {"x": 1.1, "y": 1.1, "z": 1.1},
             "settings": {
               "isPiece": false,
@@ -6631,7 +6631,7 @@
             "unwrapMode": "custom",
             "visible": true,
             "doubleSided": false,
-            "shadingMode": "flat"
+            "shadingMode": "fullbright"
           },
           "children": [
             {
@@ -6683,7 +6683,7 @@
                 "unwrapMode": "custom",
                 "visible": true,
                 "doubleSided": false,
-                "shadingMode": "flat"
+                "shadingMode": "fullbright"
               }
             },
             {
@@ -6735,7 +6735,7 @@
                 "unwrapMode": "custom",
                 "visible": true,
                 "doubleSided": false,
-                "shadingMode": "flat"
+                "shadingMode": "fullbright"
               }
             }
           ]
