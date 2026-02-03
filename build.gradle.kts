@@ -3,7 +3,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import java.net.URI
 
 plugins {
-    id("dev.scaffoldit") version "0.2.4"
+    id("dev.scaffoldit") version "0.2.+"
     id("com.gradleup.shadow") version "9.3.1"
     id("maven-publish")
     java
@@ -48,9 +48,9 @@ val shade: Configuration by configurations.creating {
 configurations.implementation.get().extendsFrom(shade)
 
 dependencies {
-    runtimeOnly("dev.scaffoldit:devtools:0.2.4")
+    runtimeOnly("dev.scaffoldit:devtools:0.2.+")
 
-    shade("ws.schild:jave-core:3.3.1")
+    shade("ws.schild:jave-core:3.5.0")
 }
 
 idea {
