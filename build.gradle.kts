@@ -1,9 +1,11 @@
 import dev.scaffoldit.hytale.wire.HytaleManifest
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import java.net.URI
 
 plugins {
     id("dev.scaffoldit") version "0.2.4"
     id("com.gradleup.shadow") version "9.3.1"
+    id("maven-publish")
     java
     idea
 }
@@ -71,4 +73,17 @@ tasks.named<ShadowJar>("shadowJar") {
 
 tasks.build {
     dependsOn(tasks.shadowJar)
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = URI("https://maven.pkg.github.com/WanMine-Hytale/Wans-Music-Recorder")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
