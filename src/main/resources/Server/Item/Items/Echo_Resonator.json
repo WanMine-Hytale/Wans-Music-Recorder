@@ -74,7 +74,8 @@
         }
       }
     },
-    "Looping": true
+    "Looping": true,
+    "HitboxType": "Echo_Resonator_Hitbox"
   },
   "Tags": {
     "Type": [
