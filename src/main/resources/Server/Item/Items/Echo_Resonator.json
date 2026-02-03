@@ -44,7 +44,9 @@
       }
     ],
     "DrawType": "Model",
-    "Flags": {},
+    "Flags": {
+      "IsUsable": true
+    },
     "Gathering": {
       "Breaking": {
         "GatherType": "Stone"
@@ -80,6 +82,29 @@
               "Scale": 0.3
             }
           ]
+        }
+      }
+    },
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "DiskPlayer"
+          }
+        ]
+      }
+    },
+    "BlockEntity": {
+      "Components": {
+        "WansMusicRecorderPlayer": {
+          "MusicGraph": {
+            "MaxOctaves": 3,
+            "Tempo": 120
+          },
+          "SongName": "",
+          "Disk": {
+            "Capacity": 1
+          }
         }
       }
     },

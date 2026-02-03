@@ -1,7 +1,5 @@
 package net.wanmine.musicrecorder.blocks;
 
-import com.hypixel.hytale.assetstore.AssetLoadResult;
-import com.hypixel.hytale.assetstore.AssetUpdateQuery;
 import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.codec.KeyedCodec;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
@@ -24,9 +22,6 @@ import com.hypixel.hytale.server.core.modules.entity.item.ItemComponent;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.CooldownHandler;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.client.SimpleBlockInteraction;
 import com.hypixel.hytale.server.core.asset.type.soundevent.config.SoundEvent;
-import com.hypixel.hytale.server.core.asset.common.CommonAssetModule;
-import com.hypixel.hytale.server.core.asset.common.CommonAssetRegistry;
-import com.hypixel.hytale.server.core.asset.common.asset.FileCommonAsset;
 import com.hypixel.hytale.server.core.inventory.container.ItemContainer;
 import com.hypixel.hytale.server.core.inventory.container.SimpleItemContainer;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
@@ -39,20 +34,13 @@ import net.wanmine.musicrecorder.WansMusicRecorderPlugin;
 import net.wanmine.musicrecorder.gui.RecorderGUI;
 import net.wanmine.musicrecorder.music.MusicGraph;
 import net.wanmine.musicrecorder.music.MusicUtils;
-import net.wanmine.musicrecorder.music.OggGenerator;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
-import ws.schild.jave.EncoderException;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.io.File;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
-import java.util.logging.Level;
 
 public class RecorderBlockComponent implements Component<ChunkStore> {
     public static final BuilderCodec<RecorderBlockComponent> CODEC = BuilderCodec.builder(
@@ -65,22 +53,27 @@ public class RecorderBlockComponent implements Component<ChunkStore> {
             .add()
             .append(new KeyedCodec<>("SongName", Codec.STRING), (s, v) -> s.songName = v, s -> s.songName)
             .add()
+            .append(new KeyedCodec<>("IsAnglo", Codec.BOOLEAN), (s, v) -> s.isAnglo = v, s -> s.isAnglo)
+            .add()
             .build();
 
     private SimpleItemContainer diskContainer;
     private MusicGraph musicGraph;
     private String songName;
+    private boolean isAnglo;
 
     public RecorderBlockComponent() {
         this.diskContainer = new SimpleItemContainer((short) 1);
-        this.musicGraph = new MusicGraph(3, 120, 25);
+        this.musicGraph = new MusicGraph(3, 120, 26);
         this.songName = "New Song";
+        this.isAnglo = false;
     }
 
     public RecorderBlockComponent(RecorderBlockComponent other) {
         this.diskContainer = other.diskContainer.clone();
         this.musicGraph = other.musicGraph.clone();
         this.songName = other.songName;
+        this.isAnglo = other.isAnglo;
     }
 
     public void setSongName(String songName) {
@@ -91,14 +84,8 @@ public class RecorderBlockComponent implements Component<ChunkStore> {
         return songName;
     }
 
-    @NullableDecl
-    @Override
-    public Component<ChunkStore> clone() {
-        return new RecorderBlockComponent(this);
-    }
-
     public void registerAndPlay(Store<EntityStore> store) {
-        CompletableFuture.supplyAsync(() -> MusicUtils.registerSong(this.musicGraph, this.songName), HytaleServer.SCHEDULED_EXECUTOR).thenAccept(outStr -> playSong(outStr, store));
+        CompletableFuture.supplyAsync(() -> MusicUtils.registerSong(this.musicGraph, this.songName, false), HytaleServer.SCHEDULED_EXECUTOR).thenAccept(outStr -> playSong(outStr, store));
     }
 
     public static void playSong(String songKey, Store<EntityStore> store) {
@@ -116,29 +103,30 @@ public class RecorderBlockComponent implements Component<ChunkStore> {
         WansMusicRecorderPlugin.getInstance().getSongsPath().resolve(songKey + ".ogg").toFile().delete();
     }
 
-    /**
-     * Gets the music graph for this recorder.
-     */
     public MusicGraph getMusicGraph() {
         return musicGraph;
     }
 
-    /**
-     * Gets the disk container for storing music disks.
-     */
     public SimpleItemContainer getDiskContainer() {
         return diskContainer;
     }
 
-    /**
-     * Clears the music graph.
-     */
-    public void clearMusicGraph() {
-        this.musicGraph = new MusicGraph();
+    public boolean isAnglo() {
+        return isAnglo;
+    }
+
+    public void setAnglo(boolean isAnglo) {
+        this.isAnglo = isAnglo;
     }
 
     public static ComponentType<ChunkStore, RecorderBlockComponent> getComponentType() {
         return WansMusicRecorderPlugin.getInstance().getRecorderBlockType();
+    }
+
+    @NullableDecl
+    @Override
+    public Component<ChunkStore> clone() {
+        return new RecorderBlockComponent(this);
     }
 
     public static class RecorderRefSystem extends RefSystem<ChunkStore> {
@@ -221,7 +209,7 @@ public class RecorderBlockComponent implements Component<ChunkStore> {
             RecorderBlockComponent recorderComponent = chunkStore.getStore().getComponent(chunkStore, RecorderBlockComponent.getComponentType());
 
             if (playerComponent != null && playerRefComponent != null && recorderComponent != null) {
-                RecorderGUI gui = new RecorderGUI(playerRefComponent, recorderComponent, pos, world);
+                RecorderGUI gui = new RecorderGUI(playerRefComponent, recorderComponent, world);
 
                 playerComponent.getPageManager().openCustomPage(ref, store, gui);
             }
@@ -265,6 +253,8 @@ public class RecorderBlockComponent implements Component<ChunkStore> {
                 if (recorderComponent.diskContainer.getItemStack((short) 0) != null) {
                     if (playerContainer.addItemStack(Objects.requireNonNull(recorderComponent.diskContainer.getItemStack((short) 0))).succeeded()) {
                         recorderComponent.diskContainer.setItemStackForSlot((short) 0, ItemStack.EMPTY);
+
+                        world.setBlockInteractionState(pos, Objects.requireNonNull(world.getBlockType(pos)), "Off");
                     }
 
                     return;
@@ -285,6 +275,8 @@ public class RecorderBlockComponent implements Component<ChunkStore> {
                     ItemStack invItemStack = playerContainer.getItemStack(i);
 
                     if (invItemStack != null && invItemStack.equals(itemInHand) && playerContainer.removeItemStack(Objects.requireNonNull(itemInHand.withQuantity(1))).succeeded()) {
+                        world.setBlockInteractionState(pos, Objects.requireNonNull(world.getBlockType(pos)), "On");
+
                         recorderComponent.diskContainer.setItemStackForSlot((short) 0, itemInHand.withQuantity(1));
 
                         break;

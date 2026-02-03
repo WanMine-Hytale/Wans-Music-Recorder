@@ -2,15 +2,10 @@ package net.wanmine.musicrecorder.music;
 
 import com.hypixel.hytale.assetstore.AssetLoadResult;
 import com.hypixel.hytale.assetstore.AssetUpdateQuery;
-import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.protocol.SoundCategory;
-import com.hypixel.hytale.server.core.HytaleServer;
 import com.hypixel.hytale.server.core.asset.common.CommonAssetModule;
 import com.hypixel.hytale.server.core.asset.common.CommonAssetRegistry;
 import com.hypixel.hytale.server.core.asset.common.asset.FileCommonAsset;
 import com.hypixel.hytale.server.core.asset.type.soundevent.config.SoundEvent;
-import com.hypixel.hytale.server.core.universe.world.SoundUtil;
-import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import net.wanmine.musicrecorder.WansMusicRecorderPlugin;
 import ws.schild.jave.EncoderException;
 
@@ -25,7 +20,16 @@ import java.util.UUID;
 import java.util.logging.Level;
 
 public class MusicUtils {
-    public static String registerSong(MusicGraph musicGraph, String songName) {
+    // Private constructor to prevent instantiation
+    private MusicUtils() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
+    public static String registerSong(MusicGraph musicGraph, String songName, boolean hasUUID) {
+        if (songName.isEmpty()) {
+            return "";
+        }
+
         CommonAssetModule commonAssetModule = WansMusicRecorderPlugin.getInstance().getCommonAssetModule();
 
         if (commonAssetModule == null) {
@@ -40,38 +44,34 @@ public class MusicUtils {
             return "";
         }
 
-        String finalSongName = songName.replace(" ", "_") + "_" + UUID.randomUUID() + ".ogg";
+        String finalSongName = hasUUID ? songName + ".ogg" : songName.replace(" ", "_") + "_" + UUID.randomUUID() + ".ogg";
         File songFile = WansMusicRecorderPlugin.getInstance().getSongsPath().resolve(finalSongName).toFile();
-
-        try {
-            OggGenerator.generateOgg(musicGraph, WansMusicRecorderPlugin.getInstance().getSongsPath(), finalSongName.replace(".ogg", ""));
-        } catch (IOException | EncoderException e) {
-            WansMusicRecorderPlugin.getInstance().getLogger().at(Level.WARNING).withCause(e).log("Failed to generate song: %s", songName);
-
-            return "";
-        }
-
-        if (!songFile.exists()) {
-            WansMusicRecorderPlugin.getInstance().getLogger().at(Level.WARNING).log("Song file does not exist; Cannot register song.");
-
-            return "";
-        }
 
         String assetName = "Sounds/" + finalSongName;
 
-        if (CommonAssetRegistry.hasCommonAsset(assetName)) {
-            WansMusicRecorderPlugin.getInstance().getLogger().at(Level.WARNING).log("Song already exists; Cannot register song.");
+        if (!CommonAssetRegistry.hasCommonAsset(assetName)) {
+            try {
+                OggGenerator.generateOgg(musicGraph, WansMusicRecorderPlugin.getInstance().getSongsPath(), finalSongName.replace(".ogg", ""));
+            } catch (IOException | EncoderException e) {
+                WansMusicRecorderPlugin.getInstance().getLogger().at(Level.WARNING).withCause(e).log("Failed to generate song: %s", songName);
 
-            return "";
-        }
+                return "";
+            }
 
-        // Loading happens here
-        try {
-            byte[] bytes = Files.readAllBytes(songFile.toPath());
+            if (!songFile.exists()) {
+                WansMusicRecorderPlugin.getInstance().getLogger().at(Level.WARNING).log("Song file does not exist; Cannot register song.");
 
-            commonAssetModule.addCommonAsset(WansMusicRecorderPlugin.RUNTIME_PACK_NAME, new FileCommonAsset(songFile.toPath(), assetName, bytes));
-        } catch (IOException e) {
-            WansMusicRecorderPlugin.getInstance().getLogger().at(Level.WARNING).withCause(e).log("Failed to register sound asset %s", assetName);
+                return "";
+            }
+
+            // Loading happens here
+            try {
+                byte[] bytes = Files.readAllBytes(songFile.toPath());
+
+                commonAssetModule.addCommonAsset(WansMusicRecorderPlugin.RUNTIME_PACK_NAME, new FileCommonAsset(songFile.toPath(), assetName, bytes));
+            } catch (IOException e) {
+                WansMusicRecorderPlugin.getInstance().getLogger().at(Level.WARNING).withCause(e).log("Failed to register sound asset %s", assetName);
+            }
         }
 
         return registerSongEvent(finalSongName.replace(".ogg", ".json"), songFile);
@@ -79,6 +79,10 @@ public class MusicUtils {
 
     public static String registerSongEvent(String songName, File songFilePath) {
         File songEventFile = WansMusicRecorderPlugin.getInstance().getSongsEventPath().resolve(songName).toFile();
+
+        if (songEventFile.exists()) {
+            return songName.replace(".json", "");
+        }
 
         Map<String, Object> layer = new HashMap<>();
         layer.put("Files", Collections.singletonList(songFilePath.toPath().toString().replace("mods\\WansMusicRecorderRuntime\\Common\\", "").replace("\\", "/")));

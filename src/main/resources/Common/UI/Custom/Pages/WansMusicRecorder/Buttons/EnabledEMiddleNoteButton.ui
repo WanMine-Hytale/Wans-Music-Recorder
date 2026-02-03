@@ -1,0 +1,24 @@
+$C = "../../../Common.ui";
+$Sounds = "../../../Sounds.ui";
+
+@ButtonStyle = TextButtonStyle(
+  Default: (Background: PatchStyle(TexturePath: "../../../ButtonTextures/Secondary_E_Middle.png", Border: $C.@ButtonBorder), LabelStyle: $C.@SecondaryButtonLabelStyle),
+  Hovered: (Background: PatchStyle(TexturePath: "../../../ButtonTextures/Secondary_E_Hovered_Middle.png", Border: $C.@ButtonBorder), LabelStyle: $C.@SecondaryButtonLabelStyle),
+  Pressed: (Background: PatchStyle(TexturePath: "../../../ButtonTextures/Secondary_E_Pressed_Middle.png", Border: $C.@ButtonBorder), LabelStyle: $C.@SecondaryButtonLabelStyle),
+  Disabled: (Background: PatchStyle(TexturePath: "../../../ButtonTextures/Disabled.png", Border: $C.@ButtonBorder), LabelStyle: $C.@SecondaryButtonLabelStyle)
+);
+
+Group {
+  TextButton #NoteButton {
+    Anchor: (Width: 25, Height: 25);
+
+    Style: (
+      ...@ButtonStyle,
+      Sounds: (
+        ...$Sounds.@ButtonsLight
+      )
+    );
+
+    Text: "";
+  }
+}

@@ -5,7 +5,6 @@ import com.hypixel.hytale.codec.KeyedCodec;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.math.vector.Vector3i;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.InteractiveCustomUIPage;
@@ -32,23 +31,25 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
     private Instrument currentInstrument;
     private Note currentNote;
     private int currentPage;
-    private final Vector3i blockPos;
     private final World world;
 
-    public RecorderGUI(@NonNullDecl PlayerRef playerRef, RecorderBlockComponent recorderBlock, Vector3i blockPos, World world) {
+    public RecorderGUI(@NonNullDecl PlayerRef playerRef, RecorderBlockComponent recorderBlock, World world) {
         super(playerRef, CustomPageLifetime.CanDismissOrCloseThroughInteraction, RecorderGUI.RecorderGUIEventData.CODEC);
 
         this.recorderBlock = recorderBlock;
         this.currentInstrument = Instrument.PIANO;
         this.currentNote = new Note(0, 0, 0, 1, this.currentInstrument);
         this.currentPage = 0;
-        this.blockPos = blockPos;
         this.world = world;
     }
 
     @Override
     public void build(@NonNullDecl Ref<EntityStore> ref, @NonNullDecl UICommandBuilder commandBuilder, @NonNullDecl UIEventBuilder eventBuilder, @NonNullDecl Store<EntityStore> store) {
-        commandBuilder.append("Pages/WansMusicRecorder/Recorder.ui");
+        if (this.recorderBlock.isAnglo()) {
+            commandBuilder.append("Pages/WansMusicRecorder/Recorder.ui");
+        } else {
+            commandBuilder.append("Pages/WansMusicRecorder/FrenchRecorder.ui");
+        }
 
         this.buildNoteGrid(commandBuilder, eventBuilder);
         this.updatePage(commandBuilder, eventBuilder);
@@ -56,6 +57,7 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
         this.updateTempo(commandBuilder, eventBuilder);
         this.updateNoteLength(commandBuilder, eventBuilder);
         this.buildDropDown(commandBuilder, eventBuilder);
+        this.updateAnglo(commandBuilder, eventBuilder);
 
         eventBuilder.addEventBinding(
                 CustomUIEventBindingType.Activating, "#ClearBtn",
@@ -73,6 +75,17 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
                 CustomUIEventBindingType.Activating, "#RecordBtn",
                 new EventData()
                         .append("ClickType", "RecordSong"),
+                false);
+    }
+
+    private void updateAnglo(UICommandBuilder commandBuilder, UIEventBuilder eventBuilder) {
+        commandBuilder.set("#AngToggle.Value", this.recorderBlock.isAnglo());
+
+        eventBuilder.addEventBinding(
+                CustomUIEventBindingType.ValueChanged, "#AngToggle",
+                new EventData()
+                        .append("@AngToggle", "#AngToggle.Value")
+                        .append("ClickType", "ChangeAng"),
                 false);
     }
 
@@ -118,16 +131,16 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
 
                     if (selectedNote != null) {
                         if (selectedNote.getLength() == 1) {
-                            commandBuilder.append(selector, "Pages/WansMusicRecorder/Buttons/EnabledNoteButton.ui");
+                            commandBuilder.append(selector, "Pages/WansMusicRecorder/Buttons/Enabled" + selectedNote.getNoteName() + "NoteButton.ui");
 
                             this.generateButtonHandlers(eventBuilder, selector, octave, semitone, position, 0, true, true);
                         } else {
                             if (position + (26 * this.currentPage) == selectedNote.getPosition()) {
-                                commandBuilder.append(selector, "Pages/WansMusicRecorder/Buttons/EnabledStartNoteButton.ui");
+                                commandBuilder.append(selector, "Pages/WansMusicRecorder/Buttons/Enabled" + selectedNote.getNoteName() + "StartNoteButton.ui");
                             } else if (position + (26 * this.currentPage) < selectedNote.getEndPosition() - 1) {
-                                commandBuilder.append(selector, "Pages/WansMusicRecorder/Buttons/EnabledMiddleNoteButton.ui");
+                                commandBuilder.append(selector, "Pages/WansMusicRecorder/Buttons/Enabled" + selectedNote.getNoteName() + "MiddleNoteButton.ui");
                             } else if (position + (26 * this.currentPage) == selectedNote.getEndPosition() - 1) {
-                                commandBuilder.append(selector, "Pages/WansMusicRecorder/Buttons/EnabledEndNoteButton.ui");
+                                commandBuilder.append(selector, "Pages/WansMusicRecorder/Buttons/Enabled" + selectedNote.getNoteName() + "EndNoteButton.ui");
                             }
 
                             this.generateButtonHandlers(eventBuilder, selector, octave, semitone, selectedNote.getPosition(), position - selectedNote.getPosition(), true, true);
@@ -291,17 +304,17 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
                 this.updateSongName(commandBuilder, eventBuilder);
             }
             case "UpdateTempo" -> {
-                this.recorderBlock.getMusicGraph().setTempo(Math.max(data.getTempo(), 1));
+                this.recorderBlock.getMusicGraph().setTempo(Math.clamp(data.getTempo(), 20, 300));
 
                 this.updateTempo(commandBuilder, eventBuilder);
             }
             case "DownTempo" -> {
-                this.recorderBlock.getMusicGraph().setTempo(Math.max(this.recorderBlock.getMusicGraph().getTempo() - 1, 1));
+                this.recorderBlock.getMusicGraph().setTempo(Math.max(this.recorderBlock.getMusicGraph().getTempo() - 1, 20));
 
                 this.updateTempo(commandBuilder, eventBuilder);
             }
             case "UpTempo" -> {
-                this.recorderBlock.getMusicGraph().setTempo(this.recorderBlock.getMusicGraph().getTempo() + 1);
+                this.recorderBlock.getMusicGraph().setTempo(Math.min(this.recorderBlock.getMusicGraph().getTempo() + 1, 300));
 
                 this.updateTempo(commandBuilder, eventBuilder);
             }
@@ -384,6 +397,13 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
 
                 this.recorderBlock.getDiskContainer().setItemStackForSlot((short) 0, stack);
             }
+            case "ChangeAng" -> {
+                this.recorderBlock.setAnglo(data.isAnglo());
+
+                this.rebuild();
+
+                return;
+            }
             case "UpdateInstrument" -> {
                 this.currentInstrument = Instrument.valueOf(data.getInstrument());
 
@@ -407,6 +427,7 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
         private int noteLength;
         private int page;
         private String instrument;
+        private boolean isAnglo;
 
         public static final BuilderCodec<RecorderGUI.RecorderGUIEventData> CODEC = BuilderCodec.builder(
                         RecorderGUI.RecorderGUIEventData.class, RecorderGUI.RecorderGUIEventData::new
@@ -430,6 +451,8 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
                 .append(new KeyedCodec<>("@PageField", Codec.INTEGER), (data, s) -> data.page = s, data -> data.page)
                 .add()
                 .append(new KeyedCodec<>("@InstrumentDropdown", Codec.STRING), (data, s) -> data.instrument = s == null ? "" : s, data -> data.instrument)
+                .add()
+                .append(new KeyedCodec<>("@AngToggle", Codec.BOOLEAN), (data, s) -> data.isAnglo = s, data -> data.isAnglo)
                 .add()
                 .build();
 
@@ -473,6 +496,10 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
 
         public String getInstrument() {
            return instrument;
+        }
+
+        public boolean isAnglo() {
+           return isAnglo;
         }
     }
 }

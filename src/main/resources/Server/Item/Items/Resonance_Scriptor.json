@@ -84,7 +84,37 @@
         }
       }
     },
-    "Looping": true
+    "Looping": true,
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "Crouching": true,
+            "Failed": {
+              "Type": "OpenRecorder"
+            },
+            "Next": {
+              "Type": "DiskRecorder"
+            }
+          }
+        ]
+      }
+    },
+    "BlockEntity": {
+      "Components": {
+        "WansMusicRecorderRecorder": {
+          "Disk": {
+            "Capacity": 1
+          },
+          "MusicGraph": {
+            "MaxOctaves": 3,
+            "Tempo": 120
+          },
+          "SongName": "New Song"
+        }
+      }
+    }
   },
   "Tags": {
     "Type": [

@@ -23,7 +23,8 @@
   "Tags": {
     "Type": [
       "Recipe"
-    ]
+    ],
+    "WMRDisk": []
   },
   "Model": "Items/Resonance_Core.blockymodel",
   "UsePlayerAnimations": false,

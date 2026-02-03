@@ -11,6 +11,7 @@ import com.hypixel.hytale.server.core.modules.interaction.interaction.config.Int
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
+import net.wanmine.musicrecorder.blocks.PlayerBlockComponent;
 import net.wanmine.musicrecorder.blocks.RecorderBlockComponent;
 import net.wanmine.musicrecorder.utils.FileTypeAdapter;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
@@ -31,6 +32,7 @@ public class WansMusicRecorderPlugin extends JavaPlugin {
     private Path songsEventPath;
 
     private ComponentType<ChunkStore, RecorderBlockComponent> recorderBlockType;
+    private ComponentType<ChunkStore, PlayerBlockComponent> playerBlockType;
 
     public WansMusicRecorderPlugin(@NonNullDecl JavaPluginInit init) {
         super(init);
@@ -63,13 +65,17 @@ public class WansMusicRecorderPlugin extends JavaPlugin {
         this.recorderBlockType = this.getChunkStoreRegistry().registerComponent(RecorderBlockComponent.class, "WansMusicRecorderRecorder", RecorderBlockComponent.CODEC);
         this.getChunkStoreRegistry().registerSystem(new RecorderBlockComponent.RecorderRefSystem());
 
+        this.playerBlockType = this.getChunkStoreRegistry().registerComponent(PlayerBlockComponent.class, "WansMusicRecorderPlayer", PlayerBlockComponent.CODEC);
+        this.getChunkStoreRegistry().registerSystem(new PlayerBlockComponent.PlayerRefSystem());
+
         this.getCodecRegistry(Interaction.CODEC).register("OpenRecorder", RecorderBlockComponent.OpenRecorderInteraction.class, RecorderBlockComponent.OpenRecorderInteraction.CODEC);
         this.getCodecRegistry(Interaction.CODEC).register("DiskRecorder", RecorderBlockComponent.DiskRecorderInteraction.class, RecorderBlockComponent.DiskRecorderInteraction.CODEC);
+
+        this.getCodecRegistry(Interaction.CODEC).register("DiskPlayer", PlayerBlockComponent.DiskPlayerInteraction.class, PlayerBlockComponent.DiskPlayerInteraction.CODEC);
     }
 
     private void registerRuntimePack() {
         try {
-            // Create minimal manifest
             PluginManifest manifest = PluginManifest.CoreBuilder.corePlugin(WansMusicRecorderPlugin.class)
                     .description("Runtime assets for WansMusicRecorder")
                     .build();
@@ -98,6 +104,10 @@ public class WansMusicRecorderPlugin extends JavaPlugin {
 
     public ComponentType<ChunkStore, RecorderBlockComponent> getRecorderBlockType() {
         return recorderBlockType;
+    }
+
+    public ComponentType<ChunkStore, PlayerBlockComponent> getPlayerBlockType() {
+        return playerBlockType;
     }
 
     public Gson getGson() {

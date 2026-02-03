@@ -800,6 +800,27 @@ $C.@DecoratedContainer {
           LayoutMode: Center;
 
           Group {
+            LayoutMode: Center;
+
+            Group {
+              LayoutMode: Middle;
+              Anchor: (Right: 8);
+
+              Label #AngLabel {
+                Style: (TextColor: #ffffff);
+                Text: "Anglosaxon";
+              }
+            }
+
+            CheckBox #AngToggle {
+              Anchor: (Width: 25, Height: 25);
+              Background: (TexturePath: "../../Common/CheckBoxFrame.png", Border: 7);
+              Padding: (Full: 4);
+              Style: $C.@DefaultCheckBoxStyle;
+            }
+          }
+
+          Group {
             Anchor: (Horizontal: 1);
             LayoutMode: Top;
 
