@@ -273,7 +273,7 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
                 }
 
                 if (data.isNoteFound()) {
-                    this.recorderBlock.getMusicGraph().removeNoteAt(data.getNotePosition() + (26 * this.currentPage), data.getNoteOctave(), data.getNoteSemitone(), this.currentInstrument);
+                    this.recorderBlock.getMusicGraph().removeNoteAt(data.getNotePosition(), data.getNoteOctave(), data.getNoteSemitone(), this.currentInstrument);
                     this.currentNote = new Note(0, 0, 0, 1, this.currentInstrument);
 
                     if (!this.recorderBlock.getMusicGraph().hasNotesAfter((26 * this.currentPage) - 1)) {
@@ -288,7 +288,7 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
                 this.updateNoteLength(commandBuilder, eventBuilder);
             }
             case "R" -> {
-                for (Note note : this.recorderBlock.getMusicGraph().getNotesAtPositionIgnoreLength(data.getNotePosition() + (26 * this.currentPage))) {
+                for (Note note : this.recorderBlock.getMusicGraph().getNotesAtPositionIgnoreLength(data.getNotePosition())) {
                     if (note.getInstrument() == this.currentInstrument && note.getOctave() == data.getNoteOctave() && note.getSemitone() == data.getNoteSemitone()) {
                         this.currentNote = note;
 

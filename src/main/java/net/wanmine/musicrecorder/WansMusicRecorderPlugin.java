@@ -17,7 +17,11 @@ import net.wanmine.musicrecorder.utils.FileTypeAdapter;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
 import java.io.File;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.logging.Level;
 
 public class WansMusicRecorderPlugin extends JavaPlugin {
