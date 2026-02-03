@@ -1,0 +1,925 @@
+$C = "../../Common.ui";
+$Sounds = "../../Sounds.ui";
+
+$C.@PageOverlay { }
+
+$C.@DecoratedContainer {
+  Anchor: (Width: 740, Height: 814);
+
+  #Title {
+    Group {
+      Label #PageTitle {
+        Style: (...@TitleStyle, HorizontalAlignment: Center);
+        Padding: (Horizontal: 19);
+        Text: "Recorder";
+      }
+    }
+  }
+
+  #Content {
+    Group {
+      LayoutMode: TopScrolling;
+      FlexWeight: 1;
+      Padding: (Left: 4, Right: 4, Top: -8, Bottom: 4);
+      Anchor: (Horizontal: 1, Vertical: 1);
+
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+
+      Group #Octave3 {
+        LayoutMode: Top;
+        Anchor: (Horizontal: 1, Bottom: 4);
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 6);
+            Style: (TextColor: #ffffff);
+            Text: "B  ";
+          }
+
+          Group #Octave3Line12 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "A#";
+          }
+
+          Group #Octave3Line11 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "A  ";
+          }
+
+          Group #Octave3Line10 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "G#";
+          }
+
+          Group #Octave3Line9 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "G  ";
+          }
+
+          Group #Octave3Line8 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 7);
+            Style: (TextColor: #ffffff);
+            Text: "F#";
+          }
+
+          Group #Octave3Line7 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 8);
+            Style: (TextColor: #ffffff);
+            Text: "F  ";
+          }
+
+          Group #Octave3Line6 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 8);
+            Style: (TextColor: #ffffff);
+            Text: "E  ";
+          }
+
+          Group #Octave3Line5 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "D#";
+          }
+
+          Group #Octave3Line4 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "D  ";
+          }
+
+          Group #Octave3Line3 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "C#";
+          }
+
+          Group #Octave3Line2 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "C  ";
+          }
+
+          Group #Octave3Line1 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+      }
+
+      $C.@ContentSeparator {}
+
+      Group #Octave2 {
+        LayoutMode: Top;
+        Anchor: (Horizontal: 1, Bottom: 4, Top: 4);
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 6);
+            Style: (TextColor: #ffffff);
+            Text: "B  ";
+          }
+
+          Group #Octave2Line12 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "A#";
+          }
+
+          Group #Octave2Line11 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "A  ";
+          }
+
+          Group #Octave2Line10 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "G#";
+          }
+
+          Group #Octave2Line9 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "G  ";
+          }
+
+          Group #Octave2Line8 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 7);
+            Style: (TextColor: #ffffff);
+            Text: "F#";
+          }
+
+          Group #Octave2Line7 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 8);
+            Style: (TextColor: #ffffff);
+            Text: "F  ";
+          }
+
+          Group #Octave2Line6 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 8);
+            Style: (TextColor: #ffffff);
+            Text: "E  ";
+          }
+
+          Group #Octave2Line5 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "D#";
+          }
+
+          Group #Octave2Line4 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "D  ";
+          }
+
+          Group #Octave2Line3 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "C#";
+          }
+
+          Group #Octave2Line2 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "C  ";
+          }
+
+          Group #Octave2Line1 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+      }
+
+      $C.@ContentSeparator {}
+
+      Group #Octave1 {
+        LayoutMode: Top;
+        Anchor: (Horizontal: 1, Top: 4);
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 6);
+            Style: (TextColor: #ffffff);
+            Text: "B  ";
+          }
+
+          Group #Octave1Line12 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "A#";
+          }
+
+          Group #Octave1Line11 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "A  ";
+          }
+
+          Group #Octave1Line10 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "G#";
+          }
+
+          Group #Octave1Line9 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "G  ";
+          }
+
+          Group #Octave1Line8 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 7);
+            Style: (TextColor: #ffffff);
+            Text: "F#";
+          }
+
+          Group #Octave1Line7 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 8);
+            Style: (TextColor: #ffffff);
+            Text: "F  ";
+          }
+
+          Group #Octave1Line6 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 8);
+            Style: (TextColor: #ffffff);
+            Text: "E  ";
+          }
+
+          Group #Octave1Line5 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "D#";
+          }
+
+          Group #Octave1Line4 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "D  ";
+          }
+
+          Group #Octave1Line3 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 4);
+            Style: (TextColor: #ffffff);
+            Text: "C#";
+          }
+
+          Group #Octave1Line2 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+
+        $C.@ContentSeparator {}
+
+        Group {
+          LayoutMode: Left;
+          Anchor: (Horizontal: 1, Top: 1, Bottom: 1);
+
+          Label #StatusLabel {
+            Anchor: (Right: 5);
+            Style: (TextColor: #ffffff);
+            Text: "C  ";
+          }
+
+          Group #Octave1Line1 {
+            LayoutMode: Left;
+            Anchor: (Horizontal: 1);
+          }
+        }
+      }
+    }
+
+    Group {
+      Anchor: (Horizontal: 1);
+      LayoutMode: Top;
+
+      Group {
+        LayoutMode: Center;
+
+        Label #PageLabel {
+          Style: (TextColor: #ffffff);
+          Text: "Page";
+        }
+      }
+
+      Group {
+        Anchor: (Bottom: 8);
+        LayoutMode: Center;
+
+        TextButton #PageUpBtn {
+          Anchor: (Width: 25, Height: 25, Left: 8);
+
+          Style: (
+            ...$C.@SmallSecondaryTextButtonStyle,
+            Sounds: (
+              ...$Sounds.@ButtonsLight
+            )
+          );
+
+          Text: "-";
+        }
+
+        $C.@NumberField #PageField {
+          @Anchor = (Width: 75, Left: 8);
+        }
+
+        TextButton #PageDownBtn {
+          Anchor: (Width: 25, Height: 25, Left: 8);
+
+          Style: (
+            ...$C.@SmallSecondaryTextButtonStyle,
+            Sounds: (
+              ...$Sounds.@ButtonsLight
+            )
+          );
+
+          Text: "+";
+        }
+      }
+    }
+
+    $C.@ContentSeparator {}
+
+    Group {
+      LayoutMode: Top;
+      Anchor: (Vertical: 1, Horizontal: 1, Height: 200);
+
+      Group {
+        Anchor: (Horizontal: 1, Bottom: 8);
+        LayoutMode: Top;
+
+        Group {
+          LayoutMode: Center;
+
+          Label #NoteLengthLabel {
+            Style: (TextColor: #ffffff);
+            Text: "Note Length";
+          }
+        }
+
+        Group {
+          LayoutMode: Center;
+
+          TextButton #NoteLengthUpBtn {
+            Anchor: (Width: 25, Height: 25, Left: 8);
+
+            Style: (
+              ...$C.@SmallSecondaryTextButtonStyle,
+              Sounds: (
+                ...$Sounds.@ButtonsLight
+              )
+            );
+
+            Text: "-";
+          }
+
+          $C.@NumberField #NoteLengthField {
+            @Anchor = (Width: 75, Left: 8);
+          }
+
+          TextButton #NoteLengthDownBtn {
+            Anchor: (Width: 25, Height: 25, Left: 8);
+
+            Style: (
+              ...$C.@SmallSecondaryTextButtonStyle,
+              Sounds: (
+                ...$Sounds.@ButtonsLight
+              )
+            );
+
+            Text: "+";
+          }
+        }
+      }
+
+      $C.@ContentSeparator {}
+
+      Group {
+        LayoutMode: Top;
+        Anchor: (Horizontal: 1);
+
+        Group {
+          LayoutMode: Center;
+
+          Group {
+            Anchor: (Horizontal: 1);
+            LayoutMode: Top;
+
+            Group {
+              LayoutMode: Center;
+
+              Label #SongNameLabel {
+                Style: (TextColor: #ffffff);
+                Text: "Song Name";
+              }
+            }
+
+            $C.@TextField #SongNameField {
+              @Anchor = (Width: 150, Left: 8);
+            }
+          }
+
+          Group {
+            Anchor: (Horizontal: 1);
+            LayoutMode: Top;
+
+            Group {
+              LayoutMode: Center;
+
+              Label #TempoLabel {
+                Style: (TextColor: #ffffff);
+                Text: "Tempo";
+              }
+            }
+
+            Group {
+              LayoutMode: Center;
+
+              TextButton #TempoUpBtn {
+                Anchor: (Width: 25, Height: 25, Left: 8);
+
+                Style: (
+                  ...$C.@SmallSecondaryTextButtonStyle,
+                  Sounds: (
+                    ...$Sounds.@ButtonsLight
+                  )
+                );
+
+                Text: "-";
+              }
+
+              $C.@NumberField #TempoField {
+                @Anchor = (Width: 75, Left: 8);
+              }
+
+              TextButton #TempoDownBtn {
+                Anchor: (Width: 25, Height: 25, Left: 8);
+
+                Style: (
+                  ...$C.@SmallSecondaryTextButtonStyle,
+                  Sounds: (
+                    ...$Sounds.@ButtonsLight
+                  )
+                );
+
+                Text: "+";
+              }
+            }
+          }
+        }
+
+        Group {
+          LayoutMode: Center;
+          Anchor: (Top: 8, Horizontal: 1);
+
+          TextButton #ClearBtn {
+            Anchor: (Height: 25, Right: 8);
+            Padding: (Left: 8, Right: 8);
+
+            Style: (
+              ...$C.@SmallSecondaryTextButtonStyle,
+              Sounds: (
+                ...$Sounds.@ButtonsLight
+              )
+            );
+
+            Text: "Clear";
+          }
+
+          TextButton #PlayBtn {
+            Anchor: (Height: 25, Right: 8);
+            Padding: (Left: 8, Right: 8);
+
+            Style: (
+              ...$C.@SmallSecondaryTextButtonStyle,
+              Sounds: (
+                ...$Sounds.@ButtonsLight
+              )
+            );
+
+            Text: "Play";
+          }
+
+          DropdownBox #InstrumentDropdown {
+            Anchor: (Width: 330, Height: @DropdownBoxHeight);
+            Style: @DefaultDropdownBoxStyle;
+          }
+
+          TextButton #RecordBtn {
+            Anchor: (Height: 25, Left: 8);
+            Padding: (Left: 8, Right: 8);
+
+            Style: (
+              ...$C.@SmallSecondaryTextButtonStyle,
+              Sounds: (
+                ...$Sounds.@ButtonsLight
+              )
+            );
+
+            Text: "Record";
+          }
+        }
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

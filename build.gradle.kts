@@ -33,10 +33,12 @@ hytale {
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
     runtimeOnly("dev.scaffoldit:devtools:0.2.4-rc1")
+    implementation("ws.schild:jave-all-deps:3.3.1")
 }
 
 idea {
