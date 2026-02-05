@@ -276,7 +276,7 @@ public class RecorderGUI extends InteractiveCustomUIPage<RecorderGUI.RecorderGUI
                     this.recorderBlock.getMusicGraph().removeNoteAt(data.getNotePosition() + (26 * this.currentPage), data.getNoteOctave(), data.getNoteSemitone(), this.currentInstrument);
                     this.currentNote = new Note(0, 0, 0, 1, this.currentInstrument);
 
-                    if (!this.recorderBlock.getMusicGraph().hasNotesAfter((26 * this.currentPage) - 1)) {
+                    if (!this.recorderBlock.getMusicGraph().hasNotesAfter((26 * this.currentPage) - 1) && this.recorderBlock.getMusicGraph().getGridLength() > 26) {
                         this.recorderBlock.getMusicGraph().setGridLength(26 * this.currentPage);
                     }
                 } else {
