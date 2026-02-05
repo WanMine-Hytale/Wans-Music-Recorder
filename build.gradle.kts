@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "net.wanmine"
-version = "1.0.0"
+version = project.property("hytale.version").toString()
 
 java {
     toolchain {
